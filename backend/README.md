@@ -19,9 +19,13 @@ The project's PHP dependencies are managed by Composer. To install them, navigat
 The primary dependencies, as listed in composer.json, include:
 
     "require": {
-	    "php": "^8.2",
-	    "laravel/framework": "^11.0",
-	    "laravel/sanctum": "^4.0"
+        "php": "^8.1",
+        "guzzlehttp/guzzle": "^7.2",
+        "laravel/framework": "^10.10",
+        "laravel/sanctum": "^3.3",
+        "laravel/tinker": "^2.8",
+        "laravel/ui": "^4.2",
+        "spatie/laravel-medialibrary": "^10.4.4"
     }
 
 

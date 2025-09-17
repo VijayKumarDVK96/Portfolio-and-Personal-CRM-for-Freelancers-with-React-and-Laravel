@@ -35,8 +35,8 @@ root/
 - [Laravel](https://laravel.com/) – v11+
 - [PHP](https://www.php.net/) – v8.2+
 - [MySQL](https://www.mysql.com/) / PostgreSQL
-- [Composer] – dependency manager
-- [Sanctum] – authentication (if applicable)
+- Composer – Dependency manager
+- Sanctum – Authentication (if applicable)
 
   
 
@@ -73,3 +73,5 @@ See  frontend/README.md
   
 Install  Backend
 See  backend/README.md
+
+To start the project that is frontend and backend, just double click the **start-projects.bat** (Only for Windows OS). 
