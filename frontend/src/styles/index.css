@@ -1,0 +1,32 @@
+html,
+body,
+#root {
+  margin: 0;
+  padding: 0;
+  height: 100%;
+  font-family: Inter, Roboto, sans-serif;
+  scroll-behavior: smooth;
+  background: #0e1213;
+}
+
+.cursor {
+  display: inline-block;
+  width: 2px;
+  height: 1.25rem;
+  background: #7CFF00;
+  margin-left: 4px;
+  animation: blink 850ms steps(1, start) infinite;
+}
+
+@keyframes blink {
+  50% {
+    opacity: 0;
+  }
+}
+
+.down-arrow {
+  margin: 30px auto 0;
+  display: flex;
+  justify-content: center;
+  opacity: 0.8;
+}
