@@ -37,6 +37,7 @@ root/
 - [MySQL](https://www.mysql.com/) / PostgreSQL
 - Composer – Dependency manager
 - Sanctum – Authentication (if applicable)
+- Redis - Caching DB
 
   
 
