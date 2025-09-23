@@ -1,22 +1,45 @@
 import { Box, Typography, Stack } from "@mui/material";
 import DownloadIcon from "@mui/icons-material/CloudDownload";
-import GitHubIcon from "@mui/icons-material/GitHub";
-import LinkedInIcon from "@mui/icons-material/LinkedIn";
-import EmailIcon from "@mui/icons-material/Email";
+import { GitHub, LinkedIn, Email } from "@mui/icons-material";
 import { motion } from "framer-motion";
 import useTypewriter from "../hooks/useTypewriter";
 import ButtonHelper from "../utils/ButtonHelper";
 import IconButtonHelper from "../utils/IconButtonHelper";
+import { useMain } from "../contexts/MainContext";
+import { useEffect, useState, type JSX } from "react";
 
 const MotionBox = motion(Box);
 
 const neonTextStyle = {
     color: "primary.main",
     fontFamily: "'Kelly Slab', cursive",
-    fontWeight: 700
+    fontWeight: 700,
 };
 
+interface SocialLink {
+    title: string;
+    icon: JSX.Element;
+    url: string;
+}
+
 export default function HeroBanner() {
+    const { mainData } = useMain();
+    const [contact, setContact] = useState<any>(null);
+
+    useEffect(() => {
+        if (mainData?.data?.details) {
+            setContact(mainData.data.details);
+        }
+    }, [mainData]);
+
+    const socialLinks: SocialLink[] = contact
+        ? [
+            { title: "GitHub", icon: <GitHub />, url: contact.github },
+            { title: "LinkedIn", icon: <LinkedIn />, url: contact.linkedin },
+            { title: "Email", icon: <Email />, url: `mailto:${contact.email}` },
+        ].filter(Boolean) as SocialLink[]
+        : [];
+
     const hero = {
         greeting: "Hello, I'm",
         name: "Vijayakumar D",
@@ -115,8 +138,8 @@ export default function HeroBanner() {
                         mx: "auto",
                         lineHeight: 1.6,
                         fontFamily: "'EB Garamond', cursive",
-                        fontStyle: 'italic',
-                        fontSize: '1.4rem'
+                        fontStyle: "italic",
+                        fontSize: "1.4rem",
                     }}
                 >
                     {hero.description}
@@ -129,22 +152,20 @@ export default function HeroBanner() {
                     alignItems="center"
                     sx={{ mt: 4 }}
                 >
-                    <ButtonHelper 
-                        text="Download CV"
-                        icon={<DownloadIcon />}
-                    />
-
-                    <ButtonHelper
-                        text="View Projects"
-                        variant="outlined"
-                    />
+                    <ButtonHelper text="Download CV" icon={<DownloadIcon />} />
+                    <ButtonHelper text="View Projects" variant="outlined" />
                 </Stack>
 
                 {/* social icons */}
                 <Stack direction="row" spacing={2} justifyContent="center" sx={{ mt: 4 }}>
-                    <IconButtonHelper title="Github" icon={<GitHubIcon />} />
-                    <IconButtonHelper title="LinkedIn" icon={<LinkedInIcon />} />
-                    <IconButtonHelper title="Email" icon={<EmailIcon />} />
+                    {socialLinks.map((item, idx) => (
+                        <IconButtonHelper
+                            key={idx}
+                            title={item.title}
+                            icon={item.icon}
+                            url={item.url}
+                        />
+                    ))}
                 </Stack>
 
                 {/* down arrow */}

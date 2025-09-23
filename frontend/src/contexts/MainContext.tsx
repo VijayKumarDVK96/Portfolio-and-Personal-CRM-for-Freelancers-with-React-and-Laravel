@@ -1,7 +1,6 @@
 import React, { createContext, useContext, useEffect, useState } from "react";
 import ApiHelper from "../utils/ApiHelper";
 
-// Define type for the API response
 export interface MainApiData {
     status: string;
     data: {

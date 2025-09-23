@@ -1,6 +1,18 @@
 import { Box, Container, Grid, Typography, Stack } from "@mui/material";
 import { GitHub, LinkedIn, Email } from "@mui/icons-material";
 import IconButtonHelper from "../utils/IconButtonHelper";
+import { useState, useEffect, type JSX } from "react";
+import { useMain } from "../contexts/MainContext";
+
+interface SocialLink {
+    title: string;
+    icon: JSX.Element;
+    url: string;
+}
+
+interface SocialLinksProps {
+    links: SocialLink[];
+}
 
 const Branding = () => (
     <>
@@ -16,19 +28,13 @@ const Branding = () => (
     </>
 );
 
-const socialLinks = [
-    { title: "GitHub", icon: <GitHub />, url: "https://github.com" },
-    { title: "LinkedIn", icon: <LinkedIn />, url: "https://linkedin.com" },
-    { title: "Email", icon: <Email />, url: "mailto:dipak@example.com" },
-];
-
-const SocialLinks = () => (
+const SocialLinks: React.FC<SocialLinksProps> = ({ links }) => (
     <Stack
         direction="row"
         justifyContent={{ xs: "center", md: "flex-end" }}
         spacing={2}
     >
-        {socialLinks.map((item, idx) => (
+        {links.map((item, idx) => (
             <a
                 key={idx}
                 href={item.url}
@@ -43,6 +49,23 @@ const SocialLinks = () => (
 );
 
 export default function Footer() {
+    const { mainData } = useMain();
+    const [contact, setContact] = useState<any>(null);
+
+    useEffect(() => {
+        if (mainData?.data?.details) {
+            setContact(mainData.data.details);
+        }
+    }, [mainData]);
+
+    const socialLinks: SocialLink[] = contact
+        ? [
+            { title: "GitHub", icon: <GitHub />, url: contact.github },
+            { title: "LinkedIn", icon: <LinkedIn />, url: contact.linkedin },
+            { title: "Email", icon: <Email />, url: `mailto:${contact.email}` },
+        ].filter(Boolean) as SocialLink[]
+        : [];
+
     return (
         <Box
             component="footer"
@@ -63,9 +86,9 @@ export default function Footer() {
                     <Grid size={{ xs: 12, md: 6 }}>
                         <Branding />
                     </Grid>
-                    
+
                     <Grid size={{ xs: 12, md: 6 }}>
-                        <SocialLinks />
+                        <SocialLinks links={socialLinks} />
                     </Grid>
                 </Grid>
             </Container>

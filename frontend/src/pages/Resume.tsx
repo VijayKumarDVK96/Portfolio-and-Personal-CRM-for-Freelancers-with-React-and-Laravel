@@ -66,8 +66,8 @@ const TimelineSection: React.FC<TimelineSectionProps> = ({ icon, title, data }) 
                 {data.map((item, idx) => (
                     <TimelineItem key={idx}>
                         <TimelineSeparator>
-                            <TimelineDot sx={{ bgcolor: theme.palette.primary.main, p: 0.3 }}>
-                                <Avatar src={item.logo} alt={item.organization} sx={{ width: 70, height: 70, "& img": { objectFit: 'contain' } }} />
+                            <TimelineDot sx={{ bgcolor: theme.palette.primary.main, p: 0.3, borderRadius: 0 }}>
+                                <Avatar src={item.logo} alt={item.organization} sx={{ width: 70, height: 70, "& img": { objectFit: 'contain' }, bgcolor: '#fff', borderRadius: 0 }} />
                             </TimelineDot>
                             {idx < data.length - 1 && (
                                 <TimelineConnector sx={{ bgcolor: theme.palette.primary.main }} />

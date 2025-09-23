@@ -5,7 +5,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\ClientsController;
 use App\Http\Controllers\Auth\LoginController;
-use App\Http\Controllers\api\MainApiController;
+use App\Http\Controllers\Api\MainApiController;
 
 /*
 |--------------------------------------------------------------------------

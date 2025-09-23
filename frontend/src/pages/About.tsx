@@ -6,21 +6,6 @@ import SectionTitle from "../utils/SectionTitle";
 import ParagraphHelper from "../utils/ParagraphHelper";
 import { useMain } from "../contexts/MainContext";
 
-// type InfoItemProps = {
-//     label: string;
-//     value: React.ReactNode;
-//     xs?: number;
-// };
-
-// const InfoItem: React.FC<InfoItemProps> = ({ label, value, xs = 6 }) => (
-//     <Grid size={{ xs }}>
-//         <Typography variant="subtitle2" sx={{ color: "primary.main", fontWeight: 600 }}>
-//             {label}
-//         </Typography>
-//         <Typography sx={{ color: "text.primary" }}>{value}</Typography>
-//     </Grid>
-// );
-
 type StatCardProps = {
     value: number;
     label: string;

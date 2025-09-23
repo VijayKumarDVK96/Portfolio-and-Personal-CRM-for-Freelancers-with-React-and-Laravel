@@ -136,41 +136,44 @@ const Certifications: React.FC = () => {
                                     />
                                 )}
                                 <CardContent sx={{ flexGrow: 1 }}>
-                                    <Typography variant="h6" fontWeight="bold" sx={{ fontSize: '1rem' }}>
-                                        {cert.title}
-                                    </Typography>
-                                    <Typography
-                                        variant="body2"
-                                        color="text.secondary"
-                                        gutterBottom
-                                    >
-                                        {cert.organization} — {cert.year}
-                                    </Typography>
+                                    <div style={{ height: '80px' }}>
+                                        <Typography variant="h6" fontWeight="bold" sx={{ fontSize: '1rem' }}>
+                                            {cert.title}
+                                        </Typography>
+                                        <Typography
+                                            variant="body2"
+                                            color="text.secondary"
+                                            gutterBottom
+                                        >
+                                            {cert.organization} — {cert.year}
+                                        </Typography>
+                                    </div>
+
                                     {cert.description && (
                                         <Typography
                                             variant="body2"
-                                            sx={{ mb: 2, color: "text.primary", whiteSpace: "pre-line", textAlign: "justify", fontSize: '0.8rem' }}
+                                            sx={{ mb: 2, color: "text.primary", whiteSpace: "pre-line", textAlign: "justify", fontSize: '0.8rem', height: '120px' }}
                                         >
                                             {cert.description}
                                         </Typography>
                                     )}
-                                    <Chip
-                                        label={cert.category}
-                                        size="small"
-                                        color="primary"
-                                        variant="outlined"
-                                    />
                                 </CardContent>
 
                                 {cert.credentials && (
-                                    <Box sx={{ p: 2, pt: 0 }}>
+                                    <Box sx={{ p: 2, pt: 0, display: 'flex', justifyContent: 'space-between' }}>
+                                        <Chip
+                                            label={cert.category}
+                                            size="small"
+                                            color="primary"
+                                            variant="outlined"
+                                            sx={{ fontSize: '0.75rem' }}
+                                        />
+
                                         <Link
                                             href={cert.credentials}
                                             target="_blank"
                                             rel="noopener noreferrer"
                                             sx={{
-                                                display: "flex",
-                                                alignItems: "center",
                                                 color: "primary.main",
                                                 textDecoration: "none",
                                                 fontWeight: 600,

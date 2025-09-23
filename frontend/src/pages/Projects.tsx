@@ -142,7 +142,7 @@ const Projects: React.FC = () => {
                                     {project.title}
                                 </Typography>
 
-                                <Typography variant="body2" mb={2} sx={{ minHeight: 48, color: "text.primary", textAlign: 'justify' }}>
+                                <Typography variant="body2" mb={2} sx={{ height: '100px', color: "text.primary", textAlign: 'justify' }}>
                                     {project.description}
                                 </Typography>
 
