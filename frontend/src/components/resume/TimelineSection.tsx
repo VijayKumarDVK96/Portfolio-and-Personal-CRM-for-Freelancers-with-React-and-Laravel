@@ -21,11 +21,8 @@ const TimelineSection: React.FC<TimelineSectionProps> = ({ icon, title, data }) 
 
     // Create a styled icon with proper typing
     const StyledIcon = React.cloneElement(icon, {
-        style: { 
-            fontSize: 28, 
-            color: theme.palette.primary.main 
-        }
-    });
+        sx: { fontSize: 28, color: theme.palette.primary.main },
+    } as React.HTMLAttributes<HTMLElement>);
 
     return (
         <Grid size={{ xs: 12, md: 6 }}>
