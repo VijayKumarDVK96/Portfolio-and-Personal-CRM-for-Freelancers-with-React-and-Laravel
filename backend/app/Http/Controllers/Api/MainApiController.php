@@ -11,6 +11,7 @@ use App\Http\Models\TechnologyCategory;
 use App\Http\Models\UserDetail;
 use Illuminate\Support\Collection;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Cache;
 
 class MainApiController extends Controller {
     protected $thumbnail_path, $portfolio_path;
@@ -21,16 +22,34 @@ class MainApiController extends Controller {
     }
 
     public function index() {
-        $data = [];
-
-        $data['details'] = UserDetail::read_user_details(auth()->id());
-
-        $data['resume'] = $this->getResumes();
-        $data['skills'] = $this->getSkills();
-        $data['projects'] = $this->getProjects();
-        $data['certifications'] = $this->getCertifications();
+        $userId = auth()->id();
+        
+        $data = Cache::remember("user.data.{$userId}", 600, function () use ($userId) {
+            return [
+                'details' => UserDetail::read_user_details($userId),
+                'resume' => $this->getResumes(),
+                'skills' => $this->getSkills(),
+                'projects' => $this->getProjects(),
+                'certifications' => $this->getCertifications(),
+            ];
+        });
 
         return response()->json(['status' => 'success', 'data' => $data], 200);
+
+        // $data = [];
+
+        // $data['details'] = UserDetail::read_user_details(auth()->id());
+
+        // $data['resume'] = $this->getResumes();
+        // $data['skills'] = $this->getSkills();
+        // $data['projects'] = $this->getProjects();
+        // $data['certifications'] = $this->getCertifications();
+
+        // $users = Cache::remember('users.all', 600, function () {
+        //     return User::all();
+        // });
+
+        // return response()->json(['status' => 'success', 'data' => $data], 200);
     }
 
     protected function getResumes(): array {
