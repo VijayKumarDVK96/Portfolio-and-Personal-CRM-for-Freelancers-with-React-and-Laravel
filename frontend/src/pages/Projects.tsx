@@ -7,7 +7,7 @@ import SectionTitle from "../utils/SectionTitle";
 import { useMain } from "../contexts/MainContext";
 
 
-interface Project {
+export interface Project {
     id: number;
     title: string | null;
     description: string;
@@ -176,7 +176,7 @@ const Projects: React.FC = () => {
                                 )}
                                 <Link
                                     component={RouterLink}
-                                    to={`/project/${project.id}`}
+                                    to={`/project-details/${project.id}`}
                                     rel="noopener"
                                     underline="none"
                                     sx={{

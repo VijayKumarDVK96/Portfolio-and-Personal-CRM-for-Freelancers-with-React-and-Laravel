@@ -13,10 +13,34 @@ The goal is to provide a **modern dashboard and API-driven system** that can be 
 
   
 
-root/
-├── frontend/ # React + Vite/MUI project
-├── backend/ # Laravel API project
-└── README.md # This file
+Portfolio-and-Personal-CRM-for-Freelancers/
+├── backend/                     # Laravel API backend
+│   ├── app/
+│   │   ├── Http/Controllers/Api/
+│   │   └── helpers.php
+│   ├── config/
+│   ├── database/
+│   ├── routes/
+│   │   ├── api.php
+│   │   └── web.php
+│   └── .env.example
+├── frontend/                    # React frontend
+│   ├── src/
+│   │   ├── components/         # Reusable UI components
+│   │   ├── contexts/          # React contexts
+│   │   ├── hooks/             # Custom hooks
+│   │   ├── pages/             # Page components
+│   │   ├── styles/            # Global styles
+│   │   ├── types/             # TypeScript types
+│   │   ├── utils/             # Helper utilities
+│   │   ├── App.tsx            # Main app component
+│   │   ├── main.tsx           # Entry point
+│   │   └── theme.ts           # MUI theme
+│   ├── public/
+│   ├── index.html
+│   ├── package.json
+│   └── vite.config.ts
+└── README.md
 
 
 ## Technologies Used
@@ -27,7 +51,6 @@ root/
 - [React](https://react.dev/) – v18+
 - [TypeScript](https://www.typescriptlang.org/) – v5+
 - [MUI (Material UI)](https://mui.com/) – v6+
-- [ApexCharts / Recharts] – for charts
 - [Vite / CRA] – development build tool
 - [Axios] – API communication
 
