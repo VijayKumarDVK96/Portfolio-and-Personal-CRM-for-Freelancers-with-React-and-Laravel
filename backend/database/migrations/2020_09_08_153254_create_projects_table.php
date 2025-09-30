@@ -25,6 +25,7 @@ class CreateProjectsTable extends Migration
             $table->string('total_price')->nullable();
             $table->string('thumbnail_image')->nullable();
             $table->string('url')->nullable();
+            $table->string('project_url')->nullable();
             $table->string('deadline');
             $table->timestamp('created_at');
         });

@@ -78,14 +78,14 @@
                                         <span class="error-message category-error"></span>
                                     </div>
                                 </div>
-                                <div class="col-sm-6 col-md-4">
+                                <div class="col-sm-6 col-md-2">
                                     <div class="form-group mb-3">
                                         <label class="form-label">Estimated Price <span class="mandatory">*</span></label>
                                         <input class="form-control" type="number" name="estimated_price" value="{{$project->estimated_price}}">
                                         <span class="error-message estimated-price-error"></span>
                                     </div>
                                 </div>
-                                <div class="col-sm-6 col-md-4">
+                                <div class="col-sm-6 col-md-2">
                                     <div class="form-group mb-3">
                                         <label class="form-label">Total Price</label>
                                         <input class="form-control" type="number" name="total_price" value="{{$project->total_price}}">
@@ -101,13 +101,6 @@
                                 </div>
                                 <div class="col-sm-6 col-md-4">
                                     <div class="form-group mb-3">
-                                        <label class="form-label">Project URL</label>
-                                        <input class="form-control" type="text" name="url" placeholder="Enter the URL" value="{{$project->url}}">
-                                        <span class="error-message url-error"></span>
-                                    </div>
-                                </div>
-                                <div class="col-sm-6 col-md-4">
-                                    <div class="form-group mb-3">
                                         <label class="form-label">Status <span class="mandatory">*</span></label>
                                         <select class="form-control btn-square" name="status">
                                             <option value="">Select Status</option>
@@ -117,6 +110,20 @@
                                             <option value="3" {{($project->status == 3) ? 'selected' : ''}}>Closed</option>
                                         </select>
                                         <span class="error-message status-error"></span>
+                                    </div>
+                                </div>
+                                <div class="col-sm-6 col-md-4">
+                                    <div class="form-group mb-3">
+                                        <label class="form-label">Demo URL</label>
+                                        <input class="form-control" type="text" name="url" placeholder="Enter the URL" value="{{$project->url}}">
+                                        <span class="error-message url-error"></span>
+                                    </div>
+                                </div>
+                                <div class="col-sm-6 col-md-4">
+                                    <div class="form-group mb-3">
+                                        <label class="form-label">Project URL (eg: GitHub, BitBucket)</label>
+                                        <input class="form-control" type="text" name="project_url" placeholder="Project URL (eg: GitHub, BitBucket)" value="{{$project->project_url}}">
+                                        <span class="error-message project-url-error"></span>
                                     </div>
                                 </div>
 

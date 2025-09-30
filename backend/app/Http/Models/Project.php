@@ -11,7 +11,7 @@ class Project extends Model {
     // public $timestamps = ["created_at"];
     // const UPDATED_AT = null; 
 
-    protected $fillable = ['name', 'slug', 'meta_description', 'meta_keywords', 'projects_category_id', 'client_id', 'cover_image', 'description', 'estimated_price', 'total_price', 'demo_url', 'project_url',  'deadline', 'status', 'created_at', 'show_on_home'];
+    protected $fillable = ['name', 'slug', 'meta_description', 'meta_keywords', 'projects_category_id', 'client_id', 'cover_image', 'description', 'estimated_price', 'total_price', 'url', 'project_url',  'deadline', 'status', 'created_at', 'show_on_home'];
 
     protected $dates = ['created_at'];
 
@@ -86,7 +86,7 @@ class Project extends Model {
     }
 
     public static function read_project_details($id) {
-        return Project::select(['id', 'name', 'meta_description', 'status', 'thumbnail_image', 'deadline', 'description', 'estimated_price', 'total_price', 'url', 'created_at', 'projects_category_id', 'client_id', 'show_on_home'])
+        return Project::select(['id', 'name', 'meta_description', 'status', 'thumbnail_image', 'deadline', 'description', 'estimated_price', 'total_price', 'url', 'project_url', 'created_at', 'projects_category_id', 'client_id', 'show_on_home'])
             ->where('id', $id)
             ->with([
                 'client:id,full_name',

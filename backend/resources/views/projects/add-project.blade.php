@@ -52,27 +52,34 @@
                                     <span class="error-message category-error"></span>
                                 </div>
                             </div>
-                            <div class="col-sm-6 col-md-4">
+                            <div class="col-sm-6 col-md-2">
                                 <div class="form-group mb-3">
                                     <label class="form-label">Estimated Price <span class="mandatory">*</span></label>
                                     <input class="form-control" type="number" name="estimated_price">
                                     <span class="error-message estimated-price-error"></span>
                                 </div>
                             </div>
-                            <div class="col-sm-6 col-md-4">
+                            <div class="col-sm-6 col-md-2">
                                 <div class="form-group mb-3">
                                     <label class="form-label">Deadline <span class="mandatory">*</span></label>
                                     <input class="form-control deadline date" type="text" name="deadline" readonly placeholder="Choose Date">
                                     <span class="error-message deadline-error"></span>
                                 </div>
                             </div>
-                                <div class="col-sm-6 col-md-4">
-                                    <div class="form-group mb-3">
-                                        <label class="form-label">Project URL</label>
-                                        <input class="form-control" type="text" name="url" placeholder="Enter the URL">
-                                        <span class="error-message url-error"></span>
-                                    </div>
+                            <div class="col-sm-6 col-md-4">
+                                <div class="form-group mb-3">
+                                    <label class="form-label">Demo URL</label>
+                                    <input class="form-control" type="text" name="url" placeholder="Enter the URL">
+                                    <span class="error-message url-error"></span>
                                 </div>
+                            </div>
+                            <div class="col-sm-6 col-md-4">
+                                <div class="form-group mb-3">
+                                    <label class="form-label">Project URL (eg: GitHub, BitBucket)</label>
+                                    <input class="form-control" type="text" name="project_url" placeholder="Project URL (eg: GitHub, BitBucket)">
+                                    <span class="error-message project-url-error"></span>
+                                </div>
+                            </div>
                             <div class="col-md-12">
                                 <div class="form-group m-checkbox-inline mb-3">
                                     <label class="form-label">Project Technologies</label>

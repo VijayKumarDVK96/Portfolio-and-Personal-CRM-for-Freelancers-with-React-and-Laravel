@@ -23,6 +23,7 @@ class ProjectRequest extends FormRequest {
             'total_price' => 'nullable',
             'deadline' => 'required',
             'url' => 'nullable',
+            'project_url' => 'nullable',
             'status' => 'nullable',
             'description' => 'nullable',
             'show_on_home' => 'nullable',

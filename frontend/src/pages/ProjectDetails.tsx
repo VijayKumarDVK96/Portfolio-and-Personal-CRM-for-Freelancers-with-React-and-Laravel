@@ -1,7 +1,7 @@
 import { useState, useRef, useEffect } from "react";
 import { useParams, useNavigate } from "react-router-dom";
 
-import { Box, Button, Chip, Container, Typography, Grid, Stack } from "@mui/material";
+import { Box, Button, Chip, Container, Typography, Grid, Stack, Link } from "@mui/material";
 
 import ArrowBackIosIcon from "@mui/icons-material/ArrowBackIos";
 import { Code as CodeIcon } from "@mui/icons-material";
@@ -25,6 +25,21 @@ interface GalleryItem {
     id: number;
     image: string;
     position: number;
+}
+
+
+interface ProjectDetails {
+  id: number;
+  name: string;
+  description: string;
+  image: string;
+  category_id: number;
+  category: string;
+  project_url: string | null;
+  demo_url: string | null;
+  created_at: string;
+  technologies: string[];
+  galleries: GalleryItem[];
 }
 
 const ImageSlider = ({
@@ -111,38 +126,34 @@ export default function ProjectDetails() {
     const navigate = useNavigate();
     const [lightboxOpen, setLightboxOpen] = useState(false);
     const [currentIndex, setCurrentIndex] = useState(0);
-    const [projectDetails, setProjectDetails] = useState<any>(null);
+    const [projectDetails, setProjectDetails] = useState<ProjectDetails | null>(null);
     const [loading, setLoading] = useState<boolean>(true);
-    // const [error, setError] = useState<string | null>(null);
     const [galleries, setGalleries] = useState<GalleryItem[]>([]);
 
-    const fetchProjectDetails = async () => {
-        try {
-            setLoading(true);
-            // setError(null);
-            const res = await ApiHelper<any>(`project-details/${id}`, "get");
-            setProjectDetails(res.data);
-
-            const mergedGalleries: GalleryItem[] = [
-                { id: 0, image: res.data.image, position: 0 },
-                ...(res.data.galleries || []),
-            ];
-
-
-            // console.log(mergedGalleries);
-
-            setGalleries(mergedGalleries);
-        } catch (err: any) {
-            // setError(err?.response?.data?.message || "Failed to fetch main data");
-        } finally {
-            setLoading(false);
-        }
-    };
-
     useEffect(() => {
-        if (id) {
-            fetchProjectDetails();
-        }
+        const win = window as any;
+        if (win.__landingDataFetched) return;
+        win.__landingDataFetched = true;
+        
+        const fetchProjectDetails = async () => {
+            try {
+                setLoading(true);
+                const res = await ApiHelper<ProjectDetails>(`project-details/${id}`, "get");
+
+                setProjectDetails(res.data);
+
+                const mergedGalleries: GalleryItem[] = [
+                    { id: 0, image: res.data.image, position: 0 },
+                    ...(res.data.galleries || []),
+                ];
+
+                setGalleries(mergedGalleries);
+            } finally {
+                setLoading(false);
+            }
+        };
+
+        if (id) fetchProjectDetails();
     }, [id]);
 
     if (!projectDetails) {
@@ -205,13 +216,21 @@ export default function ProjectDetails() {
                         </Typography>
 
                         <Stack mt={3} mb={3} direction="row" spacing={3}>
-                            <ButtonHelper
-                                text="Code"
-                                variant="outlined"
-                                icon={<CodeIcon />}
-                            />
+                            {projectDetails.project_url && (
+                                <Link href={projectDetails.project_url} target="_blank" rel="noopener" sx={{ color: "primary.main" }}>
+                                    <ButtonHelper
+                                        text="Code"
+                                        variant="outlined"
+                                        icon={<CodeIcon />}
+                                    />
+                                </Link>
+                            )}
 
-                            <ButtonHelper text="Demo" />
+                            {projectDetails.demo_url && (
+                                <Link href={projectDetails.demo_url} target="_blank" rel="noopener" sx={{ color: "primary.main" }}>
+                                    <ButtonHelper text="Demo" />
+                                </Link>
+                            )}
                         </Stack>
 
                         <Box mt={3} mb={3}>

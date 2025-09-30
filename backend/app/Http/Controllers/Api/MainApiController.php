@@ -195,7 +195,7 @@ class MainApiController extends Controller {
             'category_id' => $p->projects_category_id ?? null,
             'category' => $p->projects_category->name ?? null,
             'project_url' => $p->project_url ?? null,
-            'demo_url' => $p->demo_url ?? null,
+            'demo_url' => $p->url ?? null,
             'created_at' => $this->formatDate($p->created_at),
             'technologies' => ($p->technologies ?? collect())->pluck('name')->values()->toArray(),
             'galleries'   => ($p->galleries ?? collect())->map(function ($g) {
