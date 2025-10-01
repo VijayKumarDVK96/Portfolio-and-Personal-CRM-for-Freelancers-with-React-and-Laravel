@@ -164,11 +164,11 @@ const Projects: React.FC = () => {
                             </CardContent>
 
                             <CardActions sx={{ px: 2, pb: 2, pt: 0, gap: 1, justifyContent: 'space-between' }}>
-                                {project.project_url && (
+                                {/* {project.project_url && (
                                     <Link href={project.project_url} target="_blank" rel="noopener" sx={{ color: "primary.main" }}>
                                         Live Demo <OpenInNewIcon sx={{ fontSize: 15, ml: 0.5 }} />
                                     </Link>
-                                )}
+                                )} */}
                                 {project.demo_url && (
                                     <Link href={project.demo_url} target="_blank" rel="noopener" sx={{ color: "primary.main" }}>
                                         Demo <OpenInNewIcon sx={{ fontSize: 15, ml: 0.5 }} />

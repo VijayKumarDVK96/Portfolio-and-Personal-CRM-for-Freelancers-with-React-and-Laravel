@@ -131,29 +131,26 @@ export default function ProjectDetails() {
     const [galleries, setGalleries] = useState<GalleryItem[]>([]);
 
     useEffect(() => {
-        const win = window as any;
-        if (win.__landingDataFetched) return;
-        win.__landingDataFetched = true;
-        
-        const fetchProjectDetails = async () => {
-            try {
-                setLoading(true);
-                const res = await ApiHelper<ProjectDetails>(`project-details/${id}`, "get");
+        if(loading) {
+            const fetchProjectDetails = async () => {
+                try {
+                    const res = await ApiHelper<ProjectDetails>(`project-details/${id}`, "get");
 
-                setProjectDetails(res.data);
+                    setProjectDetails(res.data);
 
-                const mergedGalleries: GalleryItem[] = [
-                    { id: 0, image: res.data.image, position: 0 },
-                    ...(res.data.galleries || []),
-                ];
+                    const mergedGalleries: GalleryItem[] = [
+                        { id: 0, image: res.data.image, position: 0 },
+                        ...(res.data.galleries || []),
+                    ];
 
-                setGalleries(mergedGalleries);
-            } finally {
-                setLoading(false);
-            }
-        };
+                    setGalleries(mergedGalleries);
+                } finally {
+                    setLoading(false);
+                }
+            };
 
-        if (id) fetchProjectDetails();
+            if (id) fetchProjectDetails();
+        }
     }, [id]);
 
     if (!projectDetails) {
@@ -216,7 +213,7 @@ export default function ProjectDetails() {
                         </Typography>
 
                         <Stack mt={3} mb={3} direction="row" spacing={3}>
-                            {projectDetails.project_url && (
+                            {(projectDetails.project_url && projectDetails.project_url !== '#') && (
                                 <Link href={projectDetails.project_url} target="_blank" rel="noopener" sx={{ color: "primary.main" }}>
                                     <ButtonHelper
                                         text="Code"
@@ -226,7 +223,7 @@ export default function ProjectDetails() {
                                 </Link>
                             )}
 
-                            {projectDetails.demo_url && (
+                            {(projectDetails.demo_url && projectDetails.demo_url !== '#') && (
                                 <Link href={projectDetails.demo_url} target="_blank" rel="noopener" sx={{ color: "primary.main" }}>
                                     <ButtonHelper text="Demo" />
                                 </Link>
