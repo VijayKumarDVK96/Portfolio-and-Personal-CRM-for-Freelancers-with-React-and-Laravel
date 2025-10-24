@@ -25,6 +25,11 @@ Route::prefix('v1')->group(function () {
 
     Route::group(['middleware' => 'auth:sanctum'], function () {
         Route::get('main', [MainApiController::class, 'index']);
+        Route::get('/user/details', [MainApiController::class, 'userDetails']);
+        Route::get('/user/resumes', [MainApiController::class, 'resumes']);
+        Route::get('/user/skills', [MainApiController::class, 'skills']);
+        Route::get('/user/projects', [MainApiController::class, 'projects']);
+        Route::get('/user/certifications', [MainApiController::class, 'certifications']);
         Route::get('project-details/{id}', [MainApiController::class, 'getProjectDetails']);
     });
 

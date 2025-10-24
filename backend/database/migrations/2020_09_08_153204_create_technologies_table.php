@@ -14,7 +14,7 @@ class CreateTechnologiesTable extends Migration
     public function up()
     {
         Schema::create('technologies', function (Blueprint $table) {
-            $table->increments('id');
+            $table->increments('id')->index();
             $table->string('name');
         });
     }

@@ -12,7 +12,7 @@ return new class extends Migration
     public function up(): void
     {
         Schema::create('resumes', function (Blueprint $table) {
-            $table->id();
+            $table->id()->index();
             $table->enum('type', ['education', 'experience']);
             $table->string('title');
             $table->string('organization');

@@ -87,7 +87,7 @@ const About: React.FC = () => {
                             boxShadow: 3,
                         }}
                     >
-                        DM
+                        DVK
                     </Avatar>
                 </Grid>
                 

@@ -11,7 +11,7 @@ return new class extends Migration
      */
     public function up(): void {
         Schema::create('certifications', function (Blueprint $table) {
-            $table->id();
+            $table->id()->index();
             $table->string('title'); // e.g. AWS Certified Developer
             $table->string('organization'); // e.g. Amazon Web Services, Meta, Google Cloud
             $table->year('year'); // e.g. 2023, 2022

@@ -12,14 +12,14 @@ class UserDetail extends Model implements HasMedia {
 
     public $timestamps = false;
 
-    protected $fillable = ['email', 'mobile', 'dob', 'city', 'state', 'country', 'about_me', 'linkedin', 'instagram', 'github', 'profile_image', 'cover_image'];
+    protected $fillable = ['email', 'mobile', 'dob', 'city', 'state', 'country', 'about_me', 'linkedin', 'instagram', 'github', 'profile_image'];
 
     public function user() {
         return $this->belongsTo(User::class);
     }
 
     public static function read_user_details($id) {
-        return UserDetail::select('user_details.*', 'user_details.state', 'user_details.city')
+        return UserDetail::select('email', 'mobile', 'dob', 'city', 'state', 'about_me', 'linkedin', 'instagram', 'github', 'profile_image')
             ->where('user_id', $id)
             ->first();
     }
