@@ -20,6 +20,9 @@ use App\Http\Controllers\Api\MainApiController;
 
 Route::post('authenticate', [LoginController::class, 'login_api']);
 
+Route::options('{any}', function () {
+    return response()->json([], 200);
+})->where('any', '.*');
 
 Route::prefix('v1')->group(function () {
 
