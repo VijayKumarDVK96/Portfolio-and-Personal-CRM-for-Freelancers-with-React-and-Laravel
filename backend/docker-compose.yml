@@ -9,7 +9,7 @@ services:
     env_file:
       - .env.production
     volumes:
-      - ./:/var/www/vijaykumardvk
+      - C:/xampp/htdocs/Portfolio-and-Personal-CRM-for-Freelancers-with-React-and-Laravel/backend:/var/www/vijaykumardvk
     expose:
       - "9000"
     networks:
