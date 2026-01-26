@@ -11,7 +11,7 @@ pipeline {
     stage('Load env file') {
       steps {
         withCredentials([
-          file(credentialsId: 'goldentechfusion-prod-env', variable: 'ENV_FILE')
+          file(credentialsId: 'vijaykumardvk-prod-env', variable: 'ENV_FILE')
         ]) {
           sh 'cp $ENV_FILE backend/.env.production'
         }
