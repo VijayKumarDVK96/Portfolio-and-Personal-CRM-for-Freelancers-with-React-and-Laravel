@@ -19,17 +19,13 @@ pipeline {
 
     stage('Build Image') {
       steps {
-        dir('backend') {
-          sh 'docker build -t website_vijaykumardvk:latest .'
-        }
+        sh 'docker build -t website_vijaykumardvk:latest .'
       }
     }
 
     stage('Run Containers') {
       steps {
-        dir('backend') {
-          sh 'docker compose up -d'
-        }
+        sh 'docker compose up -d'
       }
     }
   }
