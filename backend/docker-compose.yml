@@ -1,0 +1,21 @@
+services:
+  website_goldentechfusion:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    container_name: website_goldentechfusion
+    restart: unless-stopped
+    working_dir: /var/www/goldentechfusion
+    env_file:
+      - .env.production
+    volumes:
+      - ./:/var/www/goldentechfusion
+    expose:
+      - "9000"
+    networks:
+      - shared-network
+
+networks:
+  shared-network:
+    external: true
+    name: shared-network
