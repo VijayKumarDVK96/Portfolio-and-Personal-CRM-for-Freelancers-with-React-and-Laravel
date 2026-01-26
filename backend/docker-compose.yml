@@ -1,15 +1,15 @@
 services:
-  website_goldentechfusion:
+  website_vijaykumardvk:
     build:
       context: .
       dockerfile: Dockerfile
-    container_name: website_goldentechfusion
+    container_name: website_vijaykumardvk
     restart: unless-stopped
-    working_dir: /var/www/goldentechfusion
+    working_dir: /var/www/vijaykumardvk
     env_file:
       - .env.production
     volumes:
-      - ./:/var/www/goldentechfusion
+      - ./:/var/www/vijaykumardvk
     expose:
       - "9000"
     networks:

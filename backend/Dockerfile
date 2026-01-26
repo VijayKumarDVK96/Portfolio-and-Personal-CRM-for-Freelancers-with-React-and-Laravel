@@ -38,22 +38,22 @@ COPY --from=composer:2 /usr/bin/composer /usr/bin/composer
 # ================================
 # Set working directory
 # ================================
-WORKDIR /var/www/goldentechfusion
+WORKDIR /var/www/vijaykumardvk
 
 # ================================
 # Copy application files
 # ================================
-COPY . /var/www/goldentechfusion
+COPY . /var/www/vijaykumardvk
 
 # ================================
 # Fix git ownership issue
 # ================================
-RUN git config --global --add safe.directory /var/www/goldentechfusion
+RUN git config --global --add safe.directory /var/www/vijaykumardvk
 
 # ================================
 # Permissions (Laravel required)
 # ================================
-RUN chown -R www-data:www-data /var/www/goldentechfusion \
+RUN chown -R www-data:www-data /var/www/vijaykumardvk \
     && chmod -R 775 storage bootstrap/cache
 
 # ================================
