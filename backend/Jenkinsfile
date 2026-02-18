@@ -55,11 +55,6 @@ pipeline {
         sh '''
         docker exec website_vijaykumardvk sh -c "
 
-          if [ ! -f .env ]; then
-            cp .env.production .env
-            php artisan key:generate --force
-          fi
-
           php artisan optimize:clear
           php artisan config:cache
         "
