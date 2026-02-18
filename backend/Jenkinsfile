@@ -9,9 +9,9 @@ pipeline {
   stages {
     stage('Stop & Clean Old Containers') {
       steps {
-        sh '''
-        docker compose down --remove-orphans --volumes || true
-        '''
+        dir('backend') {
+          sh 'docker compose down --remove-orphans || true'
+        }
       }
     }
 
@@ -55,7 +55,6 @@ pipeline {
         sh '''
         docker exec website_vijaykumardvk sh -c "
           cp .env.production .env || true &&
-          php artisan key:generate --force &&
           php artisan config:clear &&
           php artisan cache:clear &&
           php artisan config:cache
