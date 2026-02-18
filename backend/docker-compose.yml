@@ -6,6 +6,8 @@ services:
     container_name: website_vijaykumardvk
     restart: unless-stopped
     working_dir: /var/www/vijaykumardvk
+    volumes:
+      - vijaykumardvk:/var/www/vijaykumardvk
     expose:
       - "9000"
     networks:
