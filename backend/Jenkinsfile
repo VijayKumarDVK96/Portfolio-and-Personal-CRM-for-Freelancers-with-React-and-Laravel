@@ -60,7 +60,6 @@ pipeline {
             php artisan key:generate --force
           fi
 
-          php artisan migrate --force
           php artisan optimize:clear
           php artisan config:cache
         "
