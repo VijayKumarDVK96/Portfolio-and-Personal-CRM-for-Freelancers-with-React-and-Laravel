@@ -6,10 +6,8 @@ services:
     container_name: website_vijaykumardvk
     restart: unless-stopped
     working_dir: /var/www/vijaykumardvk
-    env_file:
-      - .env.production
     volumes:
-      - C:/xampp/htdocs/Portfolio-and-Personal-CRM-for-Freelancers-with-React-and-Laravel/backend:/var/www/vijaykumardvk
+      - vijaykumardvk:/var/www/vijaykumardvk
     expose:
       - "9000"
     networks:
@@ -19,3 +17,8 @@ networks:
   shared-network:
     external: true
     name: shared-network
+
+volumes:
+  vijaykumardvk:
+    external: true
+    name: vijaykumardvk

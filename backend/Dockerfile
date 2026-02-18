@@ -1,7 +1,7 @@
 # ================================
-# Base image: PHP 8.3 FPM
+# Base image: PHP 8.2 FPM
 # ================================
-FROM php:8.3-fpm
+FROM php:8.2-fpm
 
 # ================================
 # Install system dependencies
