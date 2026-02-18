@@ -19,7 +19,7 @@ class LoginController extends Controller {
     
     public function __construct() {
         $this->middleware('guest')->except('logout');
-        $this->middleware('googleRecaptcha')->only(['login']);
+        // $this->middleware('googleRecaptcha')->only(['login']);
     }
 
     public function login(LoginRequest $request) {

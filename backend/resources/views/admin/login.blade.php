@@ -13,7 +13,7 @@
     <link rel="stylesheet" type="text/css" href="{{url('admin-assets/css/style.css')}}">
     <link id="color" rel="stylesheet" href="{{url('admin-assets/css/color-1.css')}}" media="screen">
     <link rel="stylesheet" type="text/css" href="{{url('admin-assets/css/responsive.css')}}">
-    <script src="https://www.google.com/recaptcha/api.js" async defer></script>
+    <!-- <script src="https://www.google.com/recaptcha/api.js" async defer></script> -->
 
   </head>
   <body class="auth">
@@ -61,9 +61,9 @@
                                             <label for="checkbox1">Remember me</label>
                                         </div>
                                         
-                                        @if(request()->ip() != '127.0.0.1' && request()->ip() != '::1')
+                                        <!-- @if(request()->ip() != '127.0.0.1' && request()->ip() != '::1')
                                         <div class="g-recaptcha" data-sitekey="6LfLiwkdAAAAAKrLwoJgC5ZxHvzd3g8DBGtQmMQ5"></div>
-                                        @endif
+                                        @endif -->
 
                                         <div class="form-group row mt-3 mb-0">
                                             <button class="btn btn-primary btn-block" type="submit">LOGIN</button>
