@@ -54,7 +54,7 @@ pipeline {
       steps {
         sh '''
         docker exec website_vijaykumardvk sh -c "
-
+          composer update
           php artisan optimize:clear
           php artisan config:cache
         "

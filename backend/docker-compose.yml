@@ -15,3 +15,7 @@ networks:
   shared-network:
     external: true
     name: shared-network
+
+volumes:
+  vijaykumardvk:
+    name: vijaykumardvk
