@@ -1,5 +1,5 @@
 # ================================
-# Base image: PHP 8.2 FPM
+# Base image
 # ================================
 FROM php:8.2-fpm
 
@@ -41,23 +41,28 @@ COPY --from=composer:2 /usr/bin/composer /usr/bin/composer
 WORKDIR /var/www/vijaykumardvk
 
 # ================================
-# Copy application files
+# Copy composer files first (for layer caching)
 # ================================
-COPY . /var/www/vijaykumardvk
+COPY composer.json composer.lock ./
 
 # ================================
-# Fix git ownership issue
+# Install PHP dependencies
 # ================================
-RUN git config --global --add safe.directory /var/www/vijaykumardvk
+RUN composer install --no-dev --optimize-autoloader --no-interaction
 
 # ================================
-# Permissions (Laravel required)
+# Copy remaining application files
+# ================================
+COPY . .
+
+# ================================
+# Fix permissions
 # ================================
 RUN chown -R www-data:www-data /var/www/vijaykumardvk \
     && chmod -R 775 storage bootstrap/cache
 
 # ================================
-# Expose PHP-FPM port
+# Expose port
 # ================================
 EXPOSE 9000
 

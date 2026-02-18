@@ -54,9 +54,14 @@ pipeline {
       steps {
         sh '''
         docker exec website_vijaykumardvk sh -c "
-          cp .env.production .env || true &&
-          php artisan config:clear &&
-          php artisan cache:clear &&
+
+          if [ ! -f .env ]; then
+            cp .env.production .env
+            php artisan key:generate --force
+          fi
+
+          php artisan migrate --force
+          php artisan optimize:clear
           php artisan config:cache
         "
         '''
