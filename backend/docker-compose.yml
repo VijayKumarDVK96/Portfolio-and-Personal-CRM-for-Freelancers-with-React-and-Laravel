@@ -1,23 +1,29 @@
 services:
-  website_vijaykumardvk:
-    build:
-      context: .
-      dockerfile: Dockerfile
-    container_name: website_vijaykumardvk
+  vijaykumardvk_app:
+    image: website_vijaykumardvk:latest
+    container_name: vijaykumardvk_app
     restart: unless-stopped
     working_dir: /var/www/vijaykumardvk
-    volumes:
-      - vijaykumardvk:/var/www/vijaykumardvk
-    expose:
-      - "9000"
     networks:
       - shared-network
+    volumes:
+      - vijaykumardvk:/var/www/vijaykumardvk
+
+  vijaykumardvk_web:
+    image: nginx:alpine
+    container_name: vijaykumardvk_web
+    restart: unless-stopped
+    networks:
+      - shared-network
+    volumes:
+      - ./nginx.conf:/etc/nginx/conf.d/default.conf
+      - vijaykumardvk:/var/www/vijaykumardvk
+    depends_on:
+      - vijaykumardvk_app
 
 networks:
   shared-network:
     external: true
-    name: shared-network
 
 volumes:
   vijaykumardvk:
-    name: vijaykumardvk

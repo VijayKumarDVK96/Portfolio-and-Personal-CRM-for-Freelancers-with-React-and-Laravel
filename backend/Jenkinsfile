@@ -29,7 +29,10 @@ pipeline {
         withCredentials([
           file(credentialsId: 'vijaykumardvk-prod-env', variable: 'ENV_FILE')
         ]) {
-          sh 'cp $ENV_FILE backend/.env.production'
+          sh '''
+            cp $ENV_FILE .env.production
+            cp .env.production .env
+          '''
         }
       }
     }
@@ -45,7 +48,7 @@ pipeline {
     stage('Run Containers') {
       steps {
         dir('backend') {
-          sh 'docker compose up -d'
+          sh 'docker compose up -d --build'
         }
       }
     }
@@ -53,10 +56,12 @@ pipeline {
     stage('Post Deploy – Laravel Setup') {
       steps {
         sh '''
-        docker exec website_vijaykumardvk sh -c "
+        docker exec vijaykumardvk_app sh -c "
           composer update
           php artisan optimize:clear
           php artisan config:cache
+          php artisan route:cache
+          php artisan view:cache
         "
         '''
       }
